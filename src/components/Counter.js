@@ -1,6 +1,6 @@
 import classes from "./Counter.module.css";
 import { useSelector, useDispatch } from "react-redux"; //for using redux we need this hook
-
+import { counterActions } from "../store/index";
 const Counter = () => {
   const counter = useSelector((state) => state.counter); //it automatically uses subscriber,
   //so, every time a value changes in redux store this components gets re-renders;
@@ -8,14 +8,14 @@ const Counter = () => {
   const show = useSelector((state) => state.showCounter);
   const dispatch = useDispatch(); //using a function to change states in store
   const incrementHandler = () => {
-    dispatch({ type: "INCREMENT" }); //type should be same as in store reducer function
+    dispatch(counterActions.increment());
   };
   const decrementHandler = () => {
-    dispatch({ type: "DECREMENT" });
+    dispatch(counterActions.decrement());
   };
 
   const toggleCounterHandler = () => {
-    dispatch({ type: "TOGGLE" });
+    dispatch(counterActions.toggle());
   };
 
   return (
