@@ -1,6 +1,6 @@
 import classes from "./Counter.module.css";
 import { useSelector, useDispatch } from "react-redux"; //for using redux we need this hook
-import { counterActions } from "../store/index";
+import { counterActions } from "../store/counter";
 const Counter = () => {
   const counter = useSelector((state) => state.counter.counter); //it automatically uses subscriber,
   //so, every time a value changes in redux store this components gets re-renders;
