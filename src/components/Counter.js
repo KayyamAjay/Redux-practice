@@ -5,6 +5,7 @@ const Counter = () => {
   const counter = useSelector((state) => state.counter); //it automatically uses subscriber,
   //so, every time a value changes in redux store this components gets re-renders;
   // console.log(counter);
+  const show = useSelector((state) => state.showCounter);
   const dispatch = useDispatch(); //using a function to change states in store
   const incrementHandler = () => {
     dispatch({ type: "INCREMENT" }); //type should be same as in store reducer function
@@ -13,12 +14,14 @@ const Counter = () => {
     dispatch({ type: "DECREMENT" });
   };
 
-  const toggleCounterHandler = () => {};
+  const toggleCounterHandler = () => {
+    dispatch({ type: "TOGGLE" });
+  };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
+      {show && <div className={classes.value}>{counter}</div>}
       <div>
         <button onClick={incrementHandler}>+</button>
         <button onClick={decrementHandler}>-</button>
