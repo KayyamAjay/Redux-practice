@@ -2,10 +2,10 @@ import classes from "./Counter.module.css";
 import { useSelector, useDispatch } from "react-redux"; //for using redux we need this hook
 import { counterActions } from "../store/index";
 const Counter = () => {
-  const counter = useSelector((state) => state.counter); //it automatically uses subscriber,
+  const counter = useSelector((state) => state.counter.counter); //it automatically uses subscriber,
   //so, every time a value changes in redux store this components gets re-renders;
   // console.log(counter);
-  const show = useSelector((state) => state.showCounter);
+  const show = useSelector((state) => state.counter.showCounter);
   const dispatch = useDispatch(); //using a function to change states in store
   const incrementHandler = () => {
     dispatch(counterActions.increment());
